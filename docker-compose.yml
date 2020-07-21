@@ -1,0 +1,6 @@
+version: "2"
+services:
+  pool:
+    image: "doodle-challenge-poll"
+    ports:
+      - "38080:8080"
