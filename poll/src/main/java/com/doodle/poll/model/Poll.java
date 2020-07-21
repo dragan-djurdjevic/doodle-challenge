@@ -20,6 +20,7 @@ public class Poll {
 	private String state;
 	private String locale;
 	private String title;
+	private Location location;
 	private String description;
 	private Initiator initiator;
 	private List<Option> options;
@@ -125,6 +126,14 @@ public class Poll {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 	public String getDescription() {
