@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.doodle.poll.model.Poll;
-import com.doodle.poll.repository.PollsRepository;
+import com.doodle.poll.repository.PollRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,14 +19,14 @@ import static org.mockito.Mockito.when;
 public class PollServiceTest {
 
 	@Mock
-	private PollsRepository pollsRepository;
+	private PollRepository pollRepository;
 
 	@InjectMocks
 	private PollServiceImpl pollService;
 
 	@Test
 	public void shouldReturnEmptyResult() {
-		when(pollsRepository.findAll()).thenReturn(Collections.emptyList());
+		when(pollRepository.findAll()).thenReturn(Collections.emptyList());
 		List<Poll> polls = pollService.getPolls();
 		assertThat(polls, empty());
 	}

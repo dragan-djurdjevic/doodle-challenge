@@ -6,4 +6,5 @@ import com.doodle.poll.model.Poll;
 
 public interface PollService {
 	List<Poll> getPolls();
+	List<Poll> searchPolls(String title);
 }
