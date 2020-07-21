@@ -40,14 +40,14 @@ public class PollServiceTest {
 	}
 
 	@Test
-	private void shouldReturnListWithResults() {
+	public void shouldReturnListWithResults() {
 		String title = "test title";
 		Poll poll = new Poll();
 		poll.setTitle(title);
 
-		when(pollCriteriaRepository.searchPolls(anyString(), anyString(), anyLong())).thenReturn(Collections.singletonList(poll));
+		when(pollCriteriaRepository.searchPolls(null, null, null)).thenReturn(Collections.singletonList(poll));
 
-		List<Poll> polls = pollService.getPolls();
+		List<Poll> polls = pollService.searchPolls(null, null, null);
 		assertThat(polls, hasSize(1));
 		assertThat(polls.get(0).getTitle(), is(title));
 	}
