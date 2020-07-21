@@ -13,13 +13,13 @@ public class DateUtils {
 		return LocalDate.parse(dateString);
 	}
 
-	public static Long toTimestamp(LocalDate localDate) {
+	public static Long toTimestampMiliseconds(LocalDate localDate) {
 		if (localDate == null) {
 			return null;
 		}
 
 		ZoneId zoneId = ZoneId.systemDefault();
-		return localDate.atStartOfDay(zoneId).toEpochSecond();
+		return localDate.atStartOfDay(zoneId).toEpochSecond() * 1000;
 	}
 
 }

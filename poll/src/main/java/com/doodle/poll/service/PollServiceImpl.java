@@ -27,7 +27,7 @@ public class PollServiceImpl implements PollService {
 	}
 
 	public List<Poll> searchPolls(String initiatorName, String title, LocalDate afterDate) {
-		Long timestamp = DateUtils.toTimestamp(afterDate) * 1000;
+		Long timestamp = DateUtils.toTimestampMiliseconds(afterDate);
 		return pollCriteriaRepository.searchPolls(initiatorName, title, timestamp);
 	}
 
