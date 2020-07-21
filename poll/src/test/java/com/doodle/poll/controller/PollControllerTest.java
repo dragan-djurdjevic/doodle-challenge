@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 
@@ -15,10 +16,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class PollControllerTest {
 
 	@LocalServerPort
-	protected int serverPort;
+	private int serverPort;
 
 	@Autowired
-	protected TestRestTemplate restTemplate;
+	private TestRestTemplate restTemplate;
+
+	@Autowired
+	private MongoTemplate mongoTemplate;
 
 	@Test
 	public void shouldReturnResponse() {
