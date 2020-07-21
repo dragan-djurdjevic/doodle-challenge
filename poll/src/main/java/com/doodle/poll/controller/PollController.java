@@ -1,9 +1,9 @@
 package com.doodle.poll.controller;
 
-import java.util.Collections;
 import java.util.List;
 
 import com.doodle.poll.model.Poll;
+import com.doodle.poll.service.PollService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,9 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/poll")
 public class PollController {
 
+	private PollService pollService;
+
+	public PollController(PollService pollService) {
+		this.pollService = pollService;
+	}
+
 	@GetMapping
 	public List<Poll> getPolls() {
-		return Collections.emptyList();
+		return pollService.getPolls();
 	}
 
 }

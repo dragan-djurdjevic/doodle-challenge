@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-@SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class PollControllerTest {
 
 	@LocalServerPort
@@ -22,7 +22,8 @@ public class PollControllerTest {
 
 	@Test
 	public void shouldReturnResponse() {
-		ResponseEntity<Object> response = restTemplate.exchange("http://localhost:" + serverPort + "/poll", HttpMethod.GET, null, Object.class);
+		ResponseEntity<Object> response = restTemplate
+				.exchange("http://localhost:" + serverPort + "/poll", HttpMethod.GET, null, Object.class);
 		assertThat(response.getStatusCodeValue(), is(200));
 	}
 
