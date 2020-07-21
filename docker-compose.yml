@@ -23,3 +23,5 @@ services:
       - mongodb
     ports:
       - "38080:8080"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=prod"
