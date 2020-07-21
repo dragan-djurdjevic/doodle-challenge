@@ -18,11 +18,19 @@ public class PollCriteriaRepositoryImpl implements PollCriteriaRepository {
 	}
 
 	@Override
-	public List<Poll> searchPolls(String initiatorName, String title, Long afterDate) {
+	public List<Poll> searchPolls(String initiatorName, String title, Long afterDateTimestamp) {
 		Query query = new Query();
+
+		if (initiatorName != null) {
+			query.addCriteria(Criteria.where("initiator.name").regex(initiatorName));
+		}
 
 		if (title != null) {
 			query.addCriteria(Criteria.where("title").regex(title));
+		}
+
+		if (afterDateTimestamp != null) {
+			query.addCriteria(Criteria.where("initiated").gt(afterDateTimestamp));
 		}
 
 		return mongoTemplate.find(query, Poll.class);

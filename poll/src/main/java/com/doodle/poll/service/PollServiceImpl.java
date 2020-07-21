@@ -1,11 +1,12 @@
 package com.doodle.poll.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.doodle.poll.model.Poll;
 import com.doodle.poll.repository.PollCriteriaRepository;
 import com.doodle.poll.repository.PollRepository;
-import org.apache.commons.lang3.StringUtils;
+import com.doodle.poll.utils.DateUtils;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,9 +26,9 @@ public class PollServiceImpl implements PollService {
 		return pollRepository.findAll();
 	}
 
-	public List<Poll> searchPolls(String title) {
-		title = StringUtils.trimToNull(title);
-		return pollCriteriaRepository.searchPolls(null, title, null);
+	public List<Poll> searchPolls(String initiatorName, String title, LocalDate afterDate) {
+		Long timestamp = DateUtils.toTimestamp(afterDate) * 1000;
+		return pollCriteriaRepository.searchPolls(initiatorName, title, timestamp);
 	}
 
 }
