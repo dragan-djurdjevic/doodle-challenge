@@ -8,6 +8,15 @@ services:
     image: "doodle-mongo-init"
     links:
       - mongodb
+  mongo-express:
+    image: mongo-express
+    depends_on:
+      - mongodb
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_MONGODB_PORT=27017
+    ports:
+      - "8888:8081"
   poll:
     image: "doodle-challenge-poll"
     depends_on:
