@@ -1,6 +1,16 @@
 version: "2"
 services:
-  pool:
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+  mongo-init:
+    image: "doodle-mongo-init"
+    links:
+      - mongodb
+  poll:
     image: "doodle-challenge-poll"
+    depends_on:
+      - mongodb
     ports:
       - "38080:8080"
