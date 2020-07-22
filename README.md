@@ -13,6 +13,11 @@ Project can be run by:
 
 - `chmod +x ./buildDocker.sh`
 - `docker-compose up`
+- access api at http://localhost:38080/poll
+- when filtering the data pass values for following query parameters
+  - afterDate - date format is YYYY-MM-DD
+  - title - string
+  - initiatorName - string
 
 ## TODO
 
